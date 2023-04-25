@@ -66,6 +66,7 @@ function Expenseform(props) {
         <label>expense date</label>
         <input
           type="date"
+          
           value={EnteredDate}
           onChange={datehandler}
           required
