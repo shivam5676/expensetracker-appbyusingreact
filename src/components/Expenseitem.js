@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import "./Expenseitem.css";
 function Expenseitem(props) {
-
-  function onclickhandler(){
-    console.log("clicked")
+  function onclickhandler() {
+    console.log("clicked");
   }
 
-const [currentamount,updatedamount]=useState(props.amount);
+  const [currentamount, updatedamount] = useState(props.amount);
 
-  function onamounthandler(){
-    updatedamount(currentamount+100);
- console.log(currentamount)
-
+  function onamounthandler() {
+    updatedamount(currentamount + 100);
+    console.log(currentamount);
   }
   return (
     <div className="expense-item">
       <ExpenseDate date={props.date}></ExpenseDate>
-      < div className="expense-item__description">
+      <div className="expense-item__description">
         <h2>{props.title}</h2>
-        <ExpenseDetails amount={currentamount} location={props.location}></ExpenseDetails>
+        <ExpenseDetails
+          amount={currentamount}
+          location={props.location}
+        ></ExpenseDetails>
       </div>
       <button onClick={onclickhandler}>Delete</button>
       <button onClick={onamounthandler}>Change Amount</button>

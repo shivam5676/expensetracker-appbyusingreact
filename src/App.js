@@ -1,6 +1,7 @@
 import Expenseitem from "./components/Expenseitem";
 import Expenseform from "./components/Expenseform";
 import NewExpense from "./components/NewExpense";
+import Expenses from "./components/Expenses";
 function App() {
   const expenses = [
     {
@@ -28,24 +29,7 @@ console.log(expense)
   }
   return (
     <div>
-      <Expenseitem
-        location={expenses[0].location}
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      ></Expenseitem>
-      <Expenseitem
-        location={expenses[1].location}
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      ></Expenseitem>
-      <Expenseitem
-        location={expenses[2].location}
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
-      ></Expenseitem>
+      <Expenses items={expenses}></Expenses>
       
       <NewExpense onAddExpense={addExpensehandler}></NewExpense>
       
