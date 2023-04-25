@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Expenseitem.css";
+import "./ExpenseForm.css";
 function Expenseform(props) {
   const [EnteredTitle, setEnteredTitle] = useState("");
   const [EnteredAmount, setEnteredAmount] = useState("");
@@ -22,9 +22,8 @@ function Expenseform(props) {
   function onsubmitdatahandler(event) {
     event.preventDefault();
     const storeddata = {
-      
       title: EnteredTitle,
-      amount: EnteredAmount,
+      amount: +EnteredAmount,
       location: EnteredLocation,
       date: new Date(EnteredDate),
     };
@@ -34,42 +33,54 @@ function Expenseform(props) {
     setEnteredDate("");
     setEnteredLocation("");
   }
-  
+
   return (
     <form onSubmit={onsubmitdatahandler}>
-      <div className="expense-item h2">
-        <label>expense title</label>
-        <input
-          type="text"
-          value={EnteredTitle}
-          onChange={titlehandler}
-          required
-        ></input>
-        <label>expense amount</label>
+      <div className="new-expense__control">
+        <div className="new-expense__control">
+          <label>expense title</label>
+          <input
+            type="text"
+            value={EnteredTitle}
+            onChange={titlehandler}
+            required
+          ></input>
+        </div>
 
-        <input
-          type="number"
-          value={EnteredAmount}
-          onChange={amounthandler}
-          required
-        ></input>
-        <label>location</label>
-        <input
-          type="text"
-          value={EnteredLocation}
-          onChange={locationhandler}
-          required
-        ></input>
-        <label>expense date</label>
-        <input
-          type="date"
-          
-          value={EnteredDate}
-          onChange={datehandler}
-          required
-        ></input>
-        <button type="button" onClick={props.onCancel}>CANCEL</button>
-        <button>ADD EXPENSE</button>
+        <div className="new-expense__control">
+          {" "}
+          <label>location</label>
+          <input
+            type="number"
+            value={EnteredAmount}
+            onChange={amounthandler}
+            required
+          ></input>
+        </div>
+        <div className="new-expense__control">
+          <label>expense amount</label>
+          <input
+            type="text"
+            value={EnteredLocation}
+            onChange={locationhandler}
+            required
+          ></input>
+        </div>
+        <div className="new-expense__control">
+          <label>expense date</label>
+          <input
+            type="date"
+            value={EnteredDate}
+            onChange={datehandler}
+            required
+          ></input>
+        </div>
+      </div>
+      <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          CANCEL
+        </button>
+        <button>ADD NEW EXPENSE</button>
       </div>
     </form>
   );

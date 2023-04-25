@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Expenseform from "./Expenseform";
+import "./NewExpense.css";
 
 const NewExpense=(props)=>{
 
