@@ -1,8 +1,5 @@
 import { useState } from "react";
-import Expenseitem from "./Expenseitem";
-
 import "./Expenseitem.css";
-import NewExpense from "./NewExpense";
 function Expenseform(props) {
   const [EnteredTitle, setEnteredTitle] = useState("");
   const [EnteredAmount, setEnteredAmount] = useState("");
@@ -71,7 +68,8 @@ function Expenseform(props) {
           onChange={datehandler}
           required
         ></input>
-        <button>submit</button>
+        <button type="button" onClick={props.onCancel}>CANCEL</button>
+        <button>ADD EXPENSE</button>
       </div>
     </form>
   );

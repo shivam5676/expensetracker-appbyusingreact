@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import NewExpense from "./components/NewExpense";
 import Expenses from "./components/Expenses";
 
+
 const dummydata=[
   {
     id:"e1",
