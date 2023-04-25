@@ -6,6 +6,7 @@ import NewExpense from "./NewExpense";
 function Expenseform(props) {
   const [EnteredTitle, setEnteredTitle] = useState("");
   const [EnteredAmount, setEnteredAmount] = useState("");
+  const [EnteredLocation, setEnteredLocation] = useState("");
   const [EnteredDate, setEnteredDate] = useState("");
 
   function titlehandler(event) {
@@ -14,35 +15,63 @@ function Expenseform(props) {
   function amounthandler(event) {
     setEnteredAmount(event.target.value);
   }
+
+  function locationhandler(event) {
+    setEnteredLocation(event.target.value);
+  }
   function datehandler(event) {
     setEnteredDate(event.target.value);
   }
   function onsubmitdatahandler(event) {
     event.preventDefault();
     const storeddata = {
+      
       title: EnteredTitle,
       amount: EnteredAmount,
+      location: EnteredLocation,
       date: new Date(EnteredDate),
     };
-props.onSaveExpenseData(storeddata);
+    props.onSaveExpenseData(storeddata);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    setEnteredLocation("");
   }
+  
   return (
     <form onSubmit={onsubmitdatahandler}>
       <div className="expense-item h2">
         <label>expense title</label>
-        <input type="text" value={EnteredTitle} onChange={titlehandler}></input>
+        <input
+          type="text"
+          value={EnteredTitle}
+          onChange={titlehandler}
+          required
+        ></input>
         <label>expense amount</label>
-   
-        <input type="number" value={EnteredAmount} onChange={amounthandler}></input>
+
+        <input
+          type="number"
+          value={EnteredAmount}
+          onChange={amounthandler}
+          required
+        ></input>
+        <label>location</label>
+        <input
+          type="text"
+          value={EnteredLocation}
+          onChange={locationhandler}
+          required
+        ></input>
         <label>expense date</label>
-    
-        <input type="date" value={EnteredDate} onChange={datehandler}></input>
+        <input
+          type="date"
+          value={EnteredDate}
+          onChange={datehandler}
+          required
+        ></input>
         <button>submit</button>
       </div>
-      
     </form>
   );
 }

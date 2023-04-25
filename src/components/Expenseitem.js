@@ -11,7 +11,6 @@ function Expenseitem(props) {
 
   function onamounthandler() {
     updatedamount(currentamount + 100);
-    console.log(currentamount);
   }
   return (
     <div className="expense-item">
